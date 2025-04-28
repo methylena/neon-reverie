@@ -1,0 +1,162 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vaporwave VHS Player</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+    <style>
+ @import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+
+body {
+  margin: 0;
+
+  font-family: 'Monoton', cursive;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.vhs {
+  width: 700px;
+  height: 340px;
+  background: #ff94f6;
+  box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 1;
+  border-radius: 20px;
+}
+
+.vhs .top {
+  height: 40px;
+  border-top: 25px solid #ac79bc;
+  background: #222;
+}
+
+.vhs .center {
+  width: 600px;
+  height: 150px;
+  margin: 20px auto;
+  background: #292929;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-radius: 30px;
+}
+
+.vhs .tape {
+  width: 150px;
+  height: 150px;
+  background: #ffb6f2;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.vhs .film {
+  width: 250px;
+  height: 250px;
+  background: #fcf;
+  border-radius: 50%;
+  position: relative;
+  top: -50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: playing 3s linear infinite;
+}
+
+.vhs .circle {
+  width: 90px;
+  height: 90px;
+  border: 10px solid #fff;
+  border-radius: 50%;
+  background: rgb(92, 74, 96);
+}
+
+.vhs .label {
+  width: 245px;
+  height: 140px;
+  cursor: pointer;
+  border-radius: 15px;
+  background: #ae7fff;
+  font-family: 'Monoton', cursive;
+  font-size: 36px;
+  text-align: center;
+  color: #fff;
+  line-height: 100%;
+  padding: 20px 0;
+  box-shadow: 0 0 20px #fff;
+  transition: transform 0.2s ease;
+}
+
+.vhs .label:hover {
+  transform: scale(1.05);
+}
+
+.vhs .label span {
+  font-size: 14px;
+  display: block;
+  margin-top: 10px;
+  font-family: sans-serif;
+}
+
+@keyframes playing {
+  0% { transform: rotate(0); }
+  100% { transform: rotate(360deg); }
+}
+
+    </style>
+  </head>
+  <body>
+ 
+<div class="container">
+  <div class="vhs">
+    <div class="top"></div>
+    <div class="center">
+      <div class="tape a">
+        <div class="film">
+          <div class="circle"></div>
+        </div>
+      </div>
+      <div class="label">Neon Reverie
+        <span>Press Here</span>
+      </div>
+      <div class="tape b">
+        <div class="film">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    <script>
+const vaporSong = 'music.mp3';
+
+const music = new Howl({
+  src: [vaporSong]
+});
+
+const button = document.querySelector('.label');
+
+if (button) {
+  button.addEventListener('click', function() {
+    if (!music.playing()) {
+      music.play();
+    } else {
+      music.pause();
+    }
+  });
+} else {
+  console.error('Button not found!');
+}
+    </script>
+  </body>
+  </html>
